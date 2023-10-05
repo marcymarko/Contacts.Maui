@@ -15,9 +15,9 @@ public partial class ContactPage : ContentPage
     {
         base.OnAppearing();
 
-        var contacts = new ObservableCollection<Contact>(ContactRepository.GetContacts());
+        SearchBar.Text = string.Empty;
 
-        listContacts.ItemsSource = contacts;
+        LoadContracts();
     }
 
 
@@ -38,5 +38,30 @@ public partial class ContactPage : ContentPage
     private void btnAdd_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(AddContactPage));
+    }
+
+    private void Delete_Clicked(object sender, EventArgs e)
+    {
+        var menuItem = sender as MenuItem;
+
+        var contact = menuItem.CommandParameter as Contact;
+
+        ContactRepository.DeleteContact(contact.ContactId);
+
+        LoadContracts();
+    }
+
+    private void LoadContracts()
+    {
+        var contacts = new ObservableCollection<Contact>(ContactRepository.GetContacts());
+
+        listContacts.ItemsSource = contacts;
+    }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var contacts = new ObservableCollection<Contact>(ContactRepository.SearchContacts(((SearchBar)sender).Text));
+        listContacts.ItemsSource = contacts;
+
     }
 }
