@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Contacts.Maui.Models
 {
     public static class ContactRepository
@@ -48,6 +43,13 @@ namespace Contacts.Maui.Models
                 contactToUpdate.Name = contact.Name;
                 contactToUpdate.Phone = contact.Phone;
             }
+        }
+
+        public static void AddContact(Contact contact)
+        {
+            var maxId = _contacts.Max(x => x.ContactId);
+            contact.ContactId = maxId + 1;
+            _contacts.Add(contact);
         }
     }
 }
