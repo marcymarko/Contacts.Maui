@@ -3,60 +3,51 @@ namespace Contacts.Maui.Views.Controls;
 public partial class ContentControl : ContentView
 {
     public event EventHandler<string> OnError;
-    public event EventHandler<EventArgs> OnSave;
+    public event EventHandler<EventArgs> OnSubmit;
     public event EventHandler<EventArgs> OnCancel;
 
 
     public ContentControl()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
-    public string Name
-	{
-		get
-		{
-			return entryName.Text;
-		}
-		set
-		{
-			entryName.Text = value;
-		}
-	}
-
-    public string Address
+    public string Bounds
     {
         get
         {
-            return entryAddress.Text;
+            return entryBounds.Text;
         }
+
         set
         {
-            entryAddress.Text = value;
+            entryBounds.Text = value;
         }
     }
 
-    public string Phone
+    public string MoveInstructions
     {
         get
         {
-            return entryPhone.Text;
+            return entryMoveInstructions.Text;
         }
+
         set
         {
-            entryPhone.Text = value;
+            entryMoveInstructions.Text = value;
         }
     }
 
-    public string Email
+    public string CurrentPosition
     {
         get
         {
-            return entryEmail.Text;
+            return entryPosition.Text;
         }
+
         set
         {
-            entryEmail.Text = value;
+            entryPosition.Text = value; 
         }
     }
 
@@ -65,24 +56,26 @@ public partial class ContentControl : ContentView
         OnCancel?.Invoke(sender, e);
     }
 
-    private void btnSave_Clicked(object sender, EventArgs e)
+    private void btnSubmit_Clicked(object sender, EventArgs e)
     {
         if (nameValidator.IsNotValid)
         {
-            OnError?.Invoke(sender, "Name is required.");
+            OnError?.Invoke(sender, "Bounds are required.");
             return;
         }
 
-        if (emailValidator.IsNotValid)
+        if(positionValidator.IsNotValid)
         {
-            foreach (var error in emailValidator.Errors)
-            {
-                OnError?.Invoke(sender, error.ToString());
-            }
-
+            OnError?.Invoke(sender, "Current position and heading required.");
             return;
         }
 
-        OnSave?.Invoke(sender, e);
-    }
+        if (moveInstructionsValidator.IsNotValid)
+        {
+            OnError?.Invoke(sender, "Move Instructions required.");
+            return;
+        }
+
+        OnSubmit?.Invoke(sender, e);
+    }   
 }

@@ -7,7 +7,7 @@
              Title="Edit Contact">
 
     <controls:ContentControl x:Name="contactCtrl"
-                             OnSave="btnUpdate_Clicked"
+                             
                              OnCancel="btnCancel_Clicked"
                              OnError="contactCtrl_OnError"></controls:ContentControl>
 

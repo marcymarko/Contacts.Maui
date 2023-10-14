@@ -9,19 +9,13 @@ public partial class AddContactPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void btnCancel_Clicked(object sender, EventArgs e)
+    private void contactCtrl_OnSubmit(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync($"//{nameof(ContactPage)}");
-    }
-
-    private void contactCtrl_OnSave(object sender, EventArgs e)
-    {
-        ContactRepository.AddContact(new Models.Contact
+        RoverOperations.Calculate(new Models.RoverData
         {
-            Name = contactCtrl.Name,
-            Email = contactCtrl.Email,
-            Phone = contactCtrl.Phone,
-            Address = contactCtrl.Address,
+            Bounds = contactCtrl.Bounds,
+            MoveInstructions = contactCtrl.MoveInstructions,
+            CurrentPosition = contactCtrl.CurrentPosition
         });
 
         Shell.Current.GoToAsync($"//{nameof(ContactPage)}");

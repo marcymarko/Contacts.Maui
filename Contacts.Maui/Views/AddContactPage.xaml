@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Contacts.Maui.Views.Controls"
              x:Class="Contacts.Maui.Views.AddContactPage"
-             Title="Add Contact">
+             Title="Rover Test">
 
     <controls:ContentControl x:Name="contactCtrl"
-                         OnSave="contactCtrl_OnSave"
-                         OnCancel="contactCtrl_OnCancel"
-                         OnError="contactCtrl_OnError"></controls:ContentControl>
-    
+         OnSubmit="contactCtrl_OnSubmit"
+         OnCancel="contactCtrl_OnCancel"
+         OnError="contactCtrl_OnError"></controls:ContentControl>
+
 </ContentPage>
