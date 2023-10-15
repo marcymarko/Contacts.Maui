@@ -34,12 +34,8 @@ namespace Contacts.Maui.Models
 
         public enum Directions
         {
-            N = 1,
-            S = 2,
-            E = 3,
-            W = 4
+            N, S, E, W  
         }
-
         public interface IPosition
         {
             void StartMoving(List<int> maxPoints, string moves);
