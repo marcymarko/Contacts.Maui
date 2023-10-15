@@ -4,9 +4,9 @@ using Contact = Contacts.Maui.Models.RoverData;
 
 namespace Contacts.Maui.Views;
 
-public partial class ContactPage : ContentPage
+public partial class Main : ContentPage
 {
-	public ContactPage()
+	public Main()
 	{
 		InitializeComponent();
     }
@@ -20,7 +20,7 @@ public partial class ContactPage : ContentPage
 
     private void btnAdd_Clicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync(nameof(AddContactPage));
+        Shell.Current.GoToAsync(nameof(MoveRover));
     }
 
     private void LoadContracts()

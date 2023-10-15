@@ -2,9 +2,9 @@ using Contacts.Maui.Models;
 
 namespace Contacts.Maui.Views;
 
-public partial class AddContactPage : ContentPage
+public partial class MoveRover : ContentPage
 {
-	public AddContactPage()
+	public MoveRover()
 	{
 		InitializeComponent();
 	}
@@ -13,17 +13,17 @@ public partial class AddContactPage : ContentPage
     {
         RoverOperations.Calculate(new Models.RoverData
         {
-            Bounds = contactCtrl.Bounds,
-            MoveInstructions = contactCtrl.MoveInstructions,
-            CurrentPosition = contactCtrl.CurrentPosition
+            Bounds = moveRoverCtrl.Bounds,
+            MoveInstructions = moveRoverCtrl.MoveInstructions,
+            CurrentPosition = moveRoverCtrl.CurrentPosition
         });
 
-        Shell.Current.GoToAsync($"//{nameof(ContactPage)}");
+        Shell.Current.GoToAsync("..");
     }
 
     private void contactCtrl_OnCancel(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync($"//{nameof(ContactPage)}");
+        Shell.Current.GoToAsync("..");
     }
 
     private void contactCtrl_OnError(object sender, string e)

@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Contacts.Maui.Views.Controls"
-             x:Class="Contacts.Maui.Views.AddContactPage"
+             x:Class="Contacts.Maui.Views.MoveRover"
              Title="Rover Test">
 
-    <controls:ContentControl x:Name="contactCtrl"
+    <controls:ContentControl x:Name="moveRoverCtrl"
          OnSubmit="contactCtrl_OnSubmit"
          OnCancel="contactCtrl_OnCancel"
          OnError="contactCtrl_OnError"></controls:ContentControl>

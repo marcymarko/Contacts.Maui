@@ -54,16 +54,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MoveRover.xaml.cs">
+	    <DependentUpon>MoveRover.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Main.xaml.cs">
+	    <DependentUpon>Main.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Controls\ContentControl.xaml.cs">
 	    <DependentUpon>ContentControl.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\AddContactPage.xaml">
+	  <MauiXaml Update="Views\MoveRover.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\ContactPage.xaml">
+	  <MauiXaml Update="Views\Main.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Controls\ContentControl.xaml">
