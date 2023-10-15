@@ -119,30 +119,37 @@ namespace Contacts.Maui.Models
 
             public void StartMoving(List<int> bounds, string moves)
             {
+                var currentPosition = new Position { X = 0, Y = 0, Direction = Directions.N };
+
+                var moveActions = new Dictionary<char, Action>
+                {
+                    { 'M', () => MoveInSameDirection() },
+                    { 'L', () => Rotate90Left() },
+                    { 'R', () => Rotate90Right() }
+                };
+
                 foreach (var move in moves)
                 {
-                    switch (move)
+                    if (moveActions.TryGetValue(move, out var action))
                     {
-                        case 'M':
-                            MoveInSameDirection();
-                            break;
-                        case 'L':
-                            Rotate90Left();
-                            break;
-                        case 'R':
-                            Rotate90Right();
-                            break;
-                        default:
-                            Console.WriteLine($"Invalid Character {move}");
-                            break;
+                        action.Invoke();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Invalid Character {move}");
                     }
 
-                    if (X < 0 || X > bounds[0] || Y < 0 || Y > bounds[1])
+                    if (!IsPositionWithinBounds(currentPosition, bounds))
                     {
-                        throw new Exception($"Position can not be beyond bounderies (0 , 0) and ({bounds[0]} , {bounds[1]})");
+                        throw new Exception($"Position cannot be beyond boundaries (0, 0) and ({bounds[0]}, {bounds[1]})");
                     }
                 }
             }
-        }       
+
+            private bool IsPositionWithinBounds(Position position, List<int> bounds)
+            {
+                return position.X >= 0 && position.X <= bounds[0] && position.Y >= 0 && position.Y <= bounds[1];
+            }
+        }
     }
 }
