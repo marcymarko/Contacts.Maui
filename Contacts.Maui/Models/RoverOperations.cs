@@ -22,13 +22,15 @@ namespace Contacts.Maui.Models
             try
             {
                 position.StartMoving(bounds, instructions);
-                Console.WriteLine($"{position.X} {position.Y} {position.Direction.ToString()}");
+                Result = $"Feedback from the rovers to NASA: {position.X} {position.Y} {position.Direction}";
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public static string Result;
 
         public enum Directions
         {
@@ -141,7 +143,7 @@ namespace Contacts.Maui.Models
 
                     if (X < 0 || X > bounds[0] || Y < 0 || Y > bounds[1])
                     {
-                        throw new Exception($"Oops! Position can not be beyond bounderies (0 , 0) and ({bounds[0]} , {bounds[1]})");
+                        throw new Exception($"Position can not be beyond bounderies (0 , 0) and ({bounds[0]} , {bounds[1]})");
                     }
                 }
             }

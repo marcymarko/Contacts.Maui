@@ -17,31 +17,15 @@
                 Clicked="btnAdd_Clicked">
         </Button>
 
-        <ListView 
+        <Label 
           Grid.Row="1"
           Grid.Column="0"
           x:Name="roverResult" 
-          BackgroundColor="Transparent"
-          SeparatorColor="Silver"
-          RowHeight="65"                   
-          >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell 
-                        Text="{Binding Name}"
-                        Detail="{Binding Email}">
-                        <TextCell.ContextActions>
-                            <MenuItem 
-                                Text="Delete" 
-                                IsDestructive="True"                                
-                                CommandParameter="{Binding .}"></MenuItem>
-                        </TextCell.ContextActions>
-                    </TextCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-
-        </ListView>
+          BackgroundColor="Transparent" 
+          HorizontalOptions="CenterAndExpand"
+          VerticalOptions="CenterAndExpand"           
+          FontSize="24"                     
+          ></Label>
 
     </Grid>
     
